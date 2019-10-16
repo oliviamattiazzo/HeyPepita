@@ -27,6 +27,8 @@ namespace HeyPepita
 
 
          /* ********** TELEGRAM ********** */
+         //Setar webhook que vai ficar aguardando a solicitação do bot
+         //Fazer o envio da mensagem quando a solicitação chegar
       }
    }
 }
