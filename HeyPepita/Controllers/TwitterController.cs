@@ -1,5 +1,6 @@
 ﻿using HeyPepita.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -46,8 +47,17 @@ namespace HeyPepita.Controllers
          return AdjustResponse(responseItems);
       }
 
-      private static List<Tweet> AdjustResponse(object item)
+      private static List<Tweet> AdjustResponse(object items)
       {
+         List<Tweet> lstTweets = new List<Tweet>();
+
+         IList lstItems = (IList)items;
+         foreach(object item in lstItems)
+         {
+            lstTweets.Add(new Tweet {
+            });
+         }
+
          return null;
       }
    }
