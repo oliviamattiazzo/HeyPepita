@@ -54,6 +54,9 @@ namespace HeyPepita.Controllers
          IList lstItems = (IList)items;
          foreach(object item in lstItems)
          {
+            /*System.Reflection.PropertyInfo pi = item.GetType().GetProperty("name");
+            String name = (String)(pi.GetValue(item, null));*/
+
             lstTweets.Add(new Tweet {
             });
          }
