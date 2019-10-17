@@ -1,3 +1,4 @@
+using HeyPepita.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,11 @@ namespace HeyPepita
 {
    class Program
    {
-      static void Main(string[] args)
+      public static void Main(string[] args)
       {
+         ChargeController.CarregamentoInicial();
+         Console.ReadKey();
+
          /* ********** TWITTER ********** */
          //Dia 1
          //Conectar com API do twitter e pegar 10 últimos tweets
@@ -29,6 +33,10 @@ namespace HeyPepita
          /* ********** TELEGRAM ********** */
          //Setar webhook que vai ficar aguardando a solicitação do bot
          //Fazer o envio da mensagem quando a solicitação chegar
+
+
+         //TODO
+         //1 - Melhorar tratamento de erros
       }
    }
 }

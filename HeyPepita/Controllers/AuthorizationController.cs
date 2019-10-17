@@ -1,34 +1,68 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Web.Script.Serialization;
+using System.Net;
+using System.IO;
+using System.Xml;
 
 namespace HeyPepita.Controllers
 {
    public class AuthorizationController
    {
-      private const string ADDRESS_KEYS = @"..\AuthorizationKeys.xml";
-      public static string GetConsumerKey()
+      private const string ADDRESS_KEYS = @"..\..\AuthorizationKeys.xml";
+      private static string GetConsumerKey()
       {
          var xml = XDocument.Load(ADDRESS_KEYS);
-         return xml.Root.Elements().Select(x => x.Element("ConsumerKey")).First().Value;
+         return xml.Root.Elements("ConsumerKey").First().Value;
       }
 
-      public static string GetConsumerSecret()
+      private static string GetConsumerSecret()
       {
          var xml = XDocument.Load(ADDRESS_KEYS);
-         return xml.Root.Elements().Select(x => x.Element("ConsumerSecret")).First().Value;
+         return xml.Root.Elements("ConsumerSecret").First().Value;
       }
 
-      public async Task<string> GetAccessToken()
+      //Credits: https://www.codeproject.com/Tips/1076400/Twitter-API-for-beginners
+      public static string GetAccessToken()
       {
-         string consumerKey =
+         string accessToken = "";
+         string consumerKey = GetConsumerKey();
+         string consumerSecret = GetConsumerSecret();
+         var credentials = Convert.ToBase64String(new UTF8Encoding().GetBytes(GetConsumerKey() + ":" + GetConsumerSecret()));
 
-         HttpClient client = new HttpClient();
-         var request = new HttpRequestMessage(HttpMethod.Post, "https://api.twitter.com/oauth2/token");
-         var credentials = Convert.ToBase64String(new UTF8Encoding().GetBytes())
+         var request = WebRequest.Create("https://api.twitter.com/oauth2/token") as HttpWebRequest;
+         request.Method = "POST";
+         request.ContentType = "application/x-www-form-urlencoded";
+         request.Headers[HttpRequestHeader.Authorization] = "Basic " + credentials;
+
+         var reqBody = Encoding.UTF8.GetBytes("grant_type=client_credentials");
+         request.ContentLength = reqBody.Length;
+
+         using (var req = request.GetRequestStream())
+         {
+            req.Write(reqBody, 0, reqBody.Length);
+         }
+         try
+         {
+            string respbody = null;
+            using (var resp = request.GetResponse().GetResponseStream())
+            {
+               var respR = new StreamReader(resp);
+               respbody = respR.ReadToEnd();
+            }
+
+            accessToken = respbody.Substring(respbody.IndexOf("access_token\":\"") + "access_token\":\"".Length, respbody.IndexOf("\"}") - (respbody.IndexOf("access_token\":\"") + "access_token\":\"".Length));
+         }
+         catch
+         {
+            throw new Exception("Error!");
+         }
+
+         return accessToken;
       }
    }
 }
