@@ -10,13 +10,19 @@ namespace HeyPepita.Controllers
 {
    public class TweetsArchiveController
    {
+      public static void FirstChargingSaves(List<Tweet> lstTweets)
+      {
+         SaveLastTweet(lstTweets.First());
+         SaveLastGoodMorningTweet(TweetAnalyzerController.FindGoodMorningTweet(lstTweets));
+      }
+
       public static void SaveLastTweet(Tweet lastTweet)
       {
          XDocument xmlDoc = XDocument.Load(Properties.Resources.ADDRESS_TWEETS);
          bool tweetIsNewer = true;
 
          if (TweetArchive.GetLastTweetFromArchive() != null)
-            tweetIsNewer = CheckCreationDateBetweenTweets(lastTweet);
+            tweetIsNewer = CheckCreationDateBetweenTweets(lastTweet, TweetArchive.GetLastTweetFromArchive());
 
          if (tweetIsNewer)
          {
@@ -30,17 +36,38 @@ namespace HeyPepita.Controllers
          }
       }
 
-      public static bool CheckCreationDateBetweenTweets(Tweet lastTweet)
+      public static bool CheckCreationDateBetweenTweets(Tweet lastTweet, Tweet tweetFromArchive)
       {
-         Tweet lastTwtFromArchive = TweetArchive.GetLastTweetFromArchive();
-
-         if (lastTweet.Id == lastTwtFromArchive.Id)
+         if (lastTweet.Id == tweetFromArchive.Id)
             return false;
 
-         if (DateTime.Compare(lastTweet.CreatedAt, lastTwtFromArchive.CreatedAt) >= 0)
+         if (DateTime.Compare(lastTweet.CreatedAt, tweetFromArchive.CreatedAt) >= 0)
             return false;
 
          return true;
+      }
+
+      public static void SaveLastGoodMorningTweet(Tweet lastGmTweet)
+      {
+         if (lastGmTweet == null)
+            throw new Exception("Error!");
+
+         XDocument xmlDoc = XDocument.Load(Properties.Resources.ADDRESS_TWEETS);
+         bool tweetIsNewer = true;
+
+         if (TweetArchive.GetLastGoodMorningTweetFromArchive() != null)
+            tweetIsNewer = CheckCreationDateBetweenTweets(lastGmTweet, TweetArchive.GetLastGoodMorningTweetFromArchive());
+
+         if (tweetIsNewer)
+         {
+            XElement root = xmlDoc.Element("Tweets");
+            IEnumerable<XElement> rows = root.Descendants("LastGoodMorningTweet");
+            XElement firstRow = rows.First();
+            firstRow.Add(new XElement("CreatedAt", lastGmTweet.CreatedAt),
+                         new XElement("Id", lastGmTweet.Id),
+                         new XElement("FullText", lastGmTweet.FullText));
+            xmlDoc.Save(Properties.Resources.ADDRESS_TWEETS);
+         }
       }
    }
 }

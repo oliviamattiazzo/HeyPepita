@@ -123,4 +123,7 @@
   <data name="ADDRESS_TWEETS" xml:space="preserve">
     <value>..\..\Tweets.xml</value>
   </data>
+  <data name="WORDS_GOOD_MORNING" xml:space="preserve">
+    <value>desej, feira, segunda, terça, quarta, quinta, sexta, sábado, domingo, família, todos, bom dia, boa tarde, coisas boas</value>
+  </data>
 </root>

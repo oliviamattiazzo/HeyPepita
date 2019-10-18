@@ -14,14 +14,9 @@ namespace HeyPepita
          ChargeController.FirstCharging();
          Console.ReadKey();
 
+
+
          /* ********** TWITTER ********** */
-         //Dia 1
-         //Conectar com API do twitter e pegar 10 últimos tweets
-         //Desses 10 últimos tweets, selecionar aquele que é o mais recente de bom dia
-         //Verificar padrão de palavras
-         //Guardar:
-         //Ultimo tweet de 'bom dia'
-         //Último tweet AT ALL
 
          //Dia N
          //Verificar se há novos tweets

@@ -77,5 +77,14 @@ namespace HeyPepita.Properties {
                 return ResourceManager.GetString("ADDRESS_TWEETS", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to desej, feira, segunda, terça, quarta, quinta, sexta, sábado, domingo, família, todos, bom dia, boa tarde, coisas boas.
+        /// </summary>
+        internal static string WORDS_GOOD_MORNING {
+            get {
+                return ResourceManager.GetString("WORDS_GOOD_MORNING", resourceCulture);
+            }
+        }
     }
 }

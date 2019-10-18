@@ -16,7 +16,7 @@ namespace HeyPepita.Controllers
       {
          List<Tweet> lstTweets = TwitterApiController.GetTweets(10);
          lstTweets.OrderBy(p => p.CreatedAt);
-         TweetsArchiveController.SaveLastTweet(lstTweets.First());
+         TweetsArchiveController.FirstChargingSaves(lstTweets);
       }
    }
 }
