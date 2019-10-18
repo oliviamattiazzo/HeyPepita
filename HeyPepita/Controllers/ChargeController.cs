@@ -9,7 +9,7 @@ namespace HeyPepita.Controllers
 {
    public class ChargeController
    {
-      public static void CarregamentoInicial()
+      public static void FirtCharging()
       {
          List<Tweet> lstTweets = TwitterController.GetTweets(10);
       }

@@ -52,16 +52,16 @@ namespace HeyPepita.Controllers
          List<Tweet> lstTweets = new List<Tweet>();
 
          IList lstItems = (IList)items;
-         foreach(object item in lstItems)
+         foreach(dynamic item in lstItems)
          {
-            /*System.Reflection.PropertyInfo pi = item.GetType().GetProperty("name");
-            String name = (String)(pi.GetValue(item, null));*/
-
             lstTweets.Add(new Tweet {
+               CreatedAt = item["created_at"],
+               FullText = item["full_text"],
+               Id = item["id"]
             });
          }
 
-         return null;
+         return lstTweets;
       }
    }
 }
