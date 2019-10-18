@@ -5,3 +5,5 @@ C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\bin\Debug\HeyPe
 C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\bin\Debug\HeyPepita.exe
 C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\obj\Debug\HeyPepita.exe
 C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\obj\Debug\HeyPepita.csprojAssemblyReference.cache
+C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\obj\Debug\HeyPepita.Properties.Resources.resources
+C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\obj\Debug\HeyPepita.csproj.GenerateResource.cache

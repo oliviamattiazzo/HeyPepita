@@ -13,17 +13,16 @@ namespace HeyPepita.Controllers
 {
    public class AuthorizationController
    {
-      private const string ADDRESS_KEYS = @"..\..\AuthorizationKeys.xml";
       private static string GetConsumerKey()
       {
-         var xml = XDocument.Load(ADDRESS_KEYS);
-         return xml.Root.Elements("ConsumerKey").First().Value;
+         var xml = XDocument.Load(Properties.Resources.ADDRESS_KEYS);
+         return xml.Root.Element("ConsumerKey").Value;
       }
 
       private static string GetConsumerSecret()
       {
-         var xml = XDocument.Load(ADDRESS_KEYS);
-         return xml.Root.Elements("ConsumerSecret").First().Value;
+         var xml = XDocument.Load(Properties.Resources.ADDRESS_KEYS);
+         return xml.Root.Element("ConsumerSecret").Value;
       }
 
       //Credits: https://www.codeproject.com/Tips/1076400/Twitter-API-for-beginners
