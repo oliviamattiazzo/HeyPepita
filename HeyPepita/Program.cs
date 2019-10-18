@@ -11,7 +11,7 @@ namespace HeyPepita
    {
       public static void Main(string[] args)
       {
-         ChargeController.FirtCharging();
+         ChargeController.FirstCharging();
          Console.ReadKey();
 
          /* ********** TWITTER ********** */

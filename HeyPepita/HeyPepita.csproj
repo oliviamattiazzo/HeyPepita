@@ -47,9 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\TweetsArchiveController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\ChargeController.cs" />
-    <Compile Include="Controllers\TwitterController.cs" />
+    <Compile Include="Controllers\TwitterApiController.cs" />
     <Compile Include="Models\Tweet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthorizationKeys.xml" />
+    <Content Include="Tweets.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -13,7 +14,7 @@ using System.Web.Script.Serialization;
 
 namespace HeyPepita.Controllers
 {
-   public class TwitterController
+   public class TwitterApiController
    {
       public static List<Tweet> GetTweets(int qtd)
       {
@@ -55,13 +56,19 @@ namespace HeyPepita.Controllers
          foreach(dynamic item in lstItems)
          {
             lstTweets.Add(new Tweet {
-               CreatedAt = item["created_at"],
+               CreatedAt = DateTimeParser(item["created_at"]),
                FullText = item["full_text"],
-               Id = item["id"]
+               Id = item["id"].ToString()
             });
          }
 
          return lstTweets;
+      }
+
+      private static DateTime DateTimeParser(string dateString)
+      {
+         //Date time format example: Thu Oct 17 20:06:45 + 0000 2019
+         return DateTime.ParseExact("Tue Dec 01 22:35:28 +0000 2015", "ddd MMM dd HH:mm:ss K yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal);
       }
    }
 }
