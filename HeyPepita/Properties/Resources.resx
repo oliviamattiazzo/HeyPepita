@@ -123,7 +123,13 @@
   <data name="ADDRESS_TWEETS" xml:space="preserve">
     <value>..\..\Tweets.xml</value>
   </data>
+  <data name="IDENTIFIER_LAST_GM_TWEET" xml:space="preserve">
+    <value>LastGoodMorningTweet</value>
+  </data>
+  <data name="IDENTIFIER_LAST_TWEET" xml:space="preserve">
+    <value>LastTweet</value>
+  </data>
   <data name="WORDS_GOOD_MORNING" xml:space="preserve">
-    <value>desej, feira, segunda, terça, quarta, quinta, sexta, sábado, domingo, família, todos, bom dia, boa tarde, coisas boas</value>
+    <value>desej, feira, segunda, terça, terca, quarta, quinta, sexta, sábado, sabado, domingo, família, familia, todos, bom dia, boa tarde, coisas boas, melhor, semana, nossas vidas, nossa vida</value>
   </data>
 </root>

@@ -13,23 +13,25 @@ namespace HeyPepita
       public static void Main(string[] args)
       {
          int daysControl = 0;
+#if RELEASE
          ChargeController.FirstCharging();
-         Console.ReadKey();
 
          while(true)
          {
             daysControl++;
             Thread.Sleep(TimeSpan.FromHours(1));
+
+            if (daysControl == 24)
+            {
+               ChargeController.UpdateTweets();
+               daysControl = 0;
+            }
          }
+#endif
 
-         /* ********** TWITTER ********** */
+         ChargeController.UpdateTweets();
 
-         //Dia N
-         //Verificar se há novos tweets
-         //Se houver, verificar se algum deles é de bom dia
-         //Se tiver tweet de 'bom dia', faz update no tweet de 'bom dia'
-         //Se não tiver, faz update no último tweet AT ALL
-
+         Console.ReadKey();
 
          /* ********** TELEGRAM ********** */
          //Setar webhook que vai ficar aguardando a solicitação do bot
@@ -38,6 +40,8 @@ namespace HeyPepita
 
          //TODO
          //1 - Melhorar tratamento de erros
+         //2 - Projeto de testes
+         //3 - Salvar logs (especialmente relacionado as buscas e ao tempo)
       }
    }
 }

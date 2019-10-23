@@ -9,22 +9,24 @@ namespace HeyPepita.Models
 {
    public class TweetArchive : Tweet
    {
-      public static DateTime GetDateTimeFromArchive(string tweetIdentifier)
+      #region Last Tweet
+
+      public static DateTime GetDateTimeFromLastTweet()
       {
          XDocument xmlDoc = XDocument.Load(Properties.Resources.ADDRESS_TWEETS);
-         return DateTime.Parse(xmlDoc.Root.Element(tweetIdentifier).Element("CreatedAt").Value);
+         return DateTime.Parse(xmlDoc.Root.Element("LastTweet").Element("CreatedAt").Value);
       }
 
-      public static string GetIdFromArchive(string tweetIdentifier)
+      public static string GetIdFromLastTweet()
       {
          XDocument xmlDoc = XDocument.Load(Properties.Resources.ADDRESS_TWEETS);
-         return xmlDoc.Root.Element(tweetIdentifier).Element("Id").Value;
+         return xmlDoc.Root.Element("LastTweet").Element("Id").Value;
       }
 
-      public static string GetFullTextFromArchive(string tweetIdentifier)
+      public static string GetFullTextFromLastTweet()
       {
          XDocument xmlDoc = XDocument.Load(Properties.Resources.ADDRESS_TWEETS);
-         return xmlDoc.Root.Element(tweetIdentifier).Element("FullText").Value;
+         return xmlDoc.Root.Element("LastTweet").Element("FullText").Value;
       }
 
       public static Tweet GetLastTweetFromArchive()
@@ -35,13 +37,35 @@ namespace HeyPepita.Models
             return null;
 
          XElement lastTweet = xmlDoc.Root.Element("LastTweet");
-         return new Tweet {
+         return new Tweet
+         {
             CreatedAt = DateTime.Parse(lastTweet.Element("CreatedAt").Value),
             FullText = lastTweet.Element("FullText").Value,
             Id = lastTweet.Element("Id").Value
          };
       }
+      #endregion
 
+      #region Last Good Morning Tweet
+
+      public static DateTime GetDateTimeFromLastGoodMorningTweet()
+      {
+         XDocument xmlDoc = XDocument.Load(Properties.Resources.ADDRESS_TWEETS);
+         return DateTime.Parse(xmlDoc.Root.Element("LastGoodMorningTweet").Element("CreatedAt").Value);
+      }
+      
+      public static string GetIdFromLastGoodMorningTweet()
+      {
+         XDocument xmlDoc = XDocument.Load(Properties.Resources.ADDRESS_TWEETS);
+         return xmlDoc.Root.Element("LastGoodMorningTweet").Element("Id").Value;
+      }
+      
+      public static string GetFullTextFromLastGoodMorningTweet()
+      {
+         XDocument xmlDoc = XDocument.Load(Properties.Resources.ADDRESS_TWEETS);
+         return xmlDoc.Root.Element("LastGoodMorningTweet").Element("FullText").Value;
+      }
+      
       public static Tweet GetLastGoodMorningTweetFromArchive()
       {
          XDocument xmlDoc = XDocument.Load(Properties.Resources.ADDRESS_TWEETS);
@@ -57,5 +81,6 @@ namespace HeyPepita.Models
             Id = lastTweet.Element("Id").Value
          };
       }
+      #endregion
    }
 }

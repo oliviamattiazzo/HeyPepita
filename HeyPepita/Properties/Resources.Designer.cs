@@ -79,7 +79,25 @@ namespace HeyPepita.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to desej, feira, segunda, terça, quarta, quinta, sexta, sábado, domingo, família, todos, bom dia, boa tarde, coisas boas.
+        ///   Looks up a localized string similar to LastGoodMorningTweet.
+        /// </summary>
+        internal static string IDENTIFIER_LAST_GM_TWEET {
+            get {
+                return ResourceManager.GetString("IDENTIFIER_LAST_GM_TWEET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LastTweet.
+        /// </summary>
+        internal static string IDENTIFIER_LAST_TWEET {
+            get {
+                return ResourceManager.GetString("IDENTIFIER_LAST_TWEET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to desej, feira, segunda, terça, terca, quarta, quinta, sexta, sábado, sabado, domingo, família, familia, todos, bom dia, boa tarde, coisas boas, melhor, semana, nossas vidas, nossa vida.
         /// </summary>
         internal static string WORDS_GOOD_MORNING {
             get {

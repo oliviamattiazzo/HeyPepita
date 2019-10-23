@@ -10,7 +10,7 @@ namespace HeyPepita.Controllers
 {
    public class TweetsArchiveController
    {
-      public static void FirstChargingSaves(List<Tweet> lstTweets)
+      public static void Saves(List<Tweet> lstTweets)
       {
          SaveLastTweet(lstTweets.First());
          SaveLastGoodMorningTweet(TweetAnalyzerController.FindGoodMorningTweet(lstTweets));
@@ -26,6 +26,8 @@ namespace HeyPepita.Controllers
 
          if (tweetIsNewer)
          {
+            DeleteTweet(xmlDoc, "LastTweet");
+
             XElement root = xmlDoc.Element("Tweets");
             IEnumerable<XElement> rows = root.Descendants("LastTweet");
             XElement firstRow = rows.First();
@@ -41,7 +43,7 @@ namespace HeyPepita.Controllers
          if (lastTweet.Id == tweetFromArchive.Id)
             return false;
 
-         if (DateTime.Compare(lastTweet.CreatedAt, tweetFromArchive.CreatedAt) >= 0)
+         if (DateTime.Compare(lastTweet.CreatedAt, tweetFromArchive.CreatedAt) <= 0)
             return false;
 
          return true;
@@ -60,6 +62,8 @@ namespace HeyPepita.Controllers
 
          if (tweetIsNewer)
          {
+            DeleteTweet(xmlDoc, "LastGoodMorningTweet");
+
             XElement root = xmlDoc.Element("Tweets");
             IEnumerable<XElement> rows = root.Descendants("LastGoodMorningTweet");
             XElement firstRow = rows.First();
@@ -68,6 +72,11 @@ namespace HeyPepita.Controllers
                          new XElement("FullText", lastGmTweet.FullText));
             xmlDoc.Save(Properties.Resources.ADDRESS_TWEETS);
          }
+      }
+
+      public static void DeleteTweet(XDocument xmlDoc, string tweetIdentifier)
+      {
+         xmlDoc.Root.Element(tweetIdentifier).Elements().ToList().Remove();
       }
    }
 }
