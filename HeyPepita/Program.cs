@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace HeyPepita
@@ -11,10 +12,15 @@ namespace HeyPepita
    {
       public static void Main(string[] args)
       {
+         int daysControl = 0;
          ChargeController.FirstCharging();
          Console.ReadKey();
 
-
+         while(true)
+         {
+            daysControl++;
+            Thread.Sleep(TimeSpan.FromHours(1));
+         }
 
          /* ********** TWITTER ********** */
 
