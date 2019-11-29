@@ -47,11 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BotController.cs" />
     <Compile Include="Controllers\TweetAnalyzerController.cs" />
     <Compile Include="Controllers\TweetsArchiveController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\ChargeController.cs" />
     <Compile Include="Controllers\TwitterApiController.cs" />
+    <Compile Include="Models\TelegramUpdate.cs" />
     <Compile Include="Models\Tweet.cs" />
     <Compile Include="Models\TweetArchive.cs" />
     <Compile Include="Program.cs" />
