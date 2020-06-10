@@ -79,6 +79,15 @@ namespace HeyPepita.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ..\..\UpdateControls.xml.
+        /// </summary>
+        internal static string ADDRESS_UPDATECONTROLS {
+            get {
+                return ResourceManager.GetString("ADDRESS_UPDATECONTROLS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LastGoodMorningTweet.
         /// </summary>
         internal static string IDENTIFIER_LAST_GM_TWEET {

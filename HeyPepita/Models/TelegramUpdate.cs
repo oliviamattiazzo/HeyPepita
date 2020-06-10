@@ -10,18 +10,29 @@ namespace HeyPepita.Models
    {
       public bool Ok { get; set; }
 
+      public List<Update> Updates { get; set; }
+
+      public TelegramUpdate()
+      {
+         Updates = new List<Update>();
+      }
+   }
+
+   public partial class Update
+   {
       public long UpdateId { get; set; }
+      
+      public Message MessageData { get; set; }
 
-      public Message Message { get; set; }
-
-      public DateTime DateUpdate { get; set; }
-
-      public string Text { get; set; }
+      public Update()
+      {
+         MessageData = new Message();
+      }
    }
 
    public partial class Message
    {
-      protected long MessageId { get; set; }
+      public long MessageId { get; set; }
 
       public long UserId { get; set; }
 
@@ -30,5 +41,11 @@ namespace HeyPepita.Models
       public string LastName { get; set; }
 
       public string Username { get; set; }
+
+      public long ChatId { get; set; }
+
+      public DateTime DateMessage { get; set; }
+
+      public string Text { get; set; }
    }
 }

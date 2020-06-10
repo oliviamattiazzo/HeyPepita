@@ -47,8 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\BotController.cs" />
-    <Compile Include="Controllers\BotTelegramController.cs" />
+    <Compile Include="Controllers\TelegramBotController.cs" />
+    <Compile Include="Controllers\TelegramMessagesSenderController.cs" />
+    <Compile Include="Controllers\TelegramUpdatesController.cs" />
     <Compile Include="Controllers\TweetAnalyzerController.cs" />
     <Compile Include="Controllers\TweetsArchiveController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
@@ -73,6 +74,7 @@
   <ItemGroup>
     <Content Include="AuthorizationKeys.xml" />
     <Content Include="Tweets.xml" />
+    <Content Include="UpdateControls.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

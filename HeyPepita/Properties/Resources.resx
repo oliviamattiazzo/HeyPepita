@@ -123,6 +123,9 @@
   <data name="ADDRESS_TWEETS" xml:space="preserve">
     <value>..\..\Tweets.xml</value>
   </data>
+  <data name="ADDRESS_UPDATECONTROLS" xml:space="preserve">
+    <value>..\..\UpdateControls.xml</value>
+  </data>
   <data name="IDENTIFIER_LAST_GM_TWEET" xml:space="preserve">
     <value>LastGoodMorningTweet</value>
   </data>

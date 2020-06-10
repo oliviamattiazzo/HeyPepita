@@ -15,24 +15,20 @@ namespace HeyPepita
       {
 
 #if DEBUG
-         BotTelegramController botTelegram = new BotTelegramController();
-         botTelegram.GetSolicitacoesTelegram();
+         int startingHour = DateTime.Now.Hour;
+         int startingMinute = DateTime.Now.AddMinutes(1).Minute;
 
+         MyScheduler.IntervalInMinutes(startingHour, startingMinute, 1, () =>
+         {
+            ChargeController.UpdateTweets();
+         });
 
-         //int startingHour = DateTime.Now.Hour;
-         //int startingMinute = DateTime.Now.AddMinutes(1).Minute;
+         MyScheduler.IntervalInMinutes(startingHour, startingMinute, 1, () =>
+         {
+            TelegramBotController.ProcessMessages();
+         });
 
-         //MyScheduler.IntervalInMinutes(startingHour, startingMinute, 1, () =>
-         //{
-         //   ChargeController.UpdateTweets();
-         //});
-
-         //MyScheduler.IntervalInMinutes(startingHour, startingMinute, 1, () =>
-         //{
-         //   //Programar as coisa do telegram
-         //});
-
-         //Console.ReadLine();
+         Console.ReadLine();
 
 #endif
 
@@ -56,7 +52,6 @@ namespace HeyPepita
 
 
          /* ********** TELEGRAM ********** */
-         //Setar webhook que vai ficar aguardando a solicitação do bot
          //Fazer o envio da mensagem quando a solicitação chegar
 
 
