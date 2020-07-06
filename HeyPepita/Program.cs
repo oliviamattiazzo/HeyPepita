@@ -18,15 +18,15 @@ namespace HeyPepita
          int startingHour = DateTime.Now.Hour;
          int startingMinute = DateTime.Now.AddMinutes(1).Minute;
 
-         MyScheduler.IntervalInMinutes(startingHour, startingMinute, 1, () =>
-         {
+         //MyScheduler.IntervalInMinutes(startingHour, startingMinute, 1, () =>
+         //{
             ChargeController.UpdateTweets();
-         });
+         //});
 
-         MyScheduler.IntervalInMinutes(startingHour, startingMinute, 1, () =>
-         {
+         //MyScheduler.IntervalInSeconds(startingHour, startingMinute, 10, () =>
+         //{
             TelegramBotController.ProcessMessages();
-         });
+         //});
 
          Console.ReadLine();
 

@@ -13,5 +13,11 @@ namespace HeyPepita.Models
       public string Id { get; set; }
 
       public string FullText { get; set; }
+
+      public string TweetUrl { get; set; }
+
+      public string NomeUsuario { get; set; }
+
+      public string Username { get; set; }
    }
 }

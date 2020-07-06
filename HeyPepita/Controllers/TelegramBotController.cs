@@ -26,18 +26,27 @@ namespace HeyPepita.Controllers
          if (!latestUpdates.Ok)
             throw new Exception("Error!");
 
+         if (latestUpdates.Updates.Count() <= 0)
+            throw new Exception("Error!");
+
          messageSenderController.ReturnMessages(FilterNewMessages(latestUpdates.Updates));
       }
 
-      public static List<Update> FilterNewMessages(List<Update> lstUpdates)
+      public static IEnumerable<Update> FilterNewMessages(List<Update> lstUpdates)
       {
-         return (List<Update>)lstUpdates.Where(p => p.UpdateId > GetLastUpdateId());
+         return lstUpdates.Where(p => p.UpdateId > GetLastUpdateId());
       }
 
       private static long GetLastUpdateId()
       {
          var xml = XDocument.Load(Properties.Resources.ADDRESS_UPDATECONTROLS);
          return long.Parse(xml.Root.Element("LastUpdateId").Value);
+      }
+
+      public static string GetBotToken()
+      {
+         var xml = XDocument.Load(Properties.Resources.ADDRESS_KEYS);
+         return xml.Root.Element("BotKey").Value;
       }
    }
 }

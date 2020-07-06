@@ -14,15 +14,9 @@ namespace HeyPepita.Controllers
 {
    public class TelegramUpdatesController
    {
-      private static string GetBotToken()
-      {
-         var xml = XDocument.Load(Properties.Resources.ADDRESS_KEYS);
-         return xml.Root.Element("BotKey").Value;
-      }
-
       public TelegramUpdate GetUpdates()
       {
-         string URL = "https://api.telegram.org/bot" + GetBotToken() + "/getUpdates";
+         string URL = "https://api.telegram.org/bot" + TelegramBotController.GetBotToken() + "/getUpdates";
 
          var getUpdates = WebRequest.Create(URL) as HttpWebRequest;
          getUpdates.Method = "GET";
@@ -78,6 +72,8 @@ namespace HeyPepita.Controllers
          }
 
          return telegramUpdate;
+
+
       }
 
       private DateTime DateTimeParser(double unixTimeStamp)

@@ -87,10 +87,15 @@ namespace HeyPepita.Controllers
          IList lstItems = (IList)items;
          foreach(dynamic item in lstItems)
          {
+            IDictionary<string, dynamic> userItens = (IDictionary<string, dynamic>)item["user"];
+
             lstTweets.Add(new Tweet {
                CreatedAt = DateTimeParser(item["created_at"]),
                FullText = item["full_text"],
-               Id = item["id"].ToString()
+               Id = item["id"].ToString(),
+               NomeUsuario = userItens["name"],
+               TweetUrl = $"twitter.com/{userItens["screen_name"]}/status/{item["id"].ToString()}",
+               Username = userItens["screen_name"]
             });
          }
 
