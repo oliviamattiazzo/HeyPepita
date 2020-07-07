@@ -23,7 +23,7 @@ namespace HeyPepita
             ChargeController.UpdateTweets();
          });
 
-         MyScheduler.IntervalInSeconds(startingHour, startingMinute, 10, () =>
+         MyScheduler.IntervalInMinutes(startingHour, startingMinute, 1, () =>
          {
             TelegramBotController.ProcessMessages();
          });
@@ -55,6 +55,7 @@ namespace HeyPepita
          //2 - Projeto de testes
          //3 - Salvar logs (especialmente relacionado as buscas e ao tempo)
          //4 - Adicionar design pattern de Chain of Responsibility
+         //5 - Comando Hey Pepita
       }
    }
 }

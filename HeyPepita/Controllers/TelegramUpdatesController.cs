@@ -56,17 +56,15 @@ namespace HeyPepita.Controllers
             IDictionary<string, dynamic> messageChat = (IDictionary<string, dynamic>)messageItens["chat"];
             Update updateToBeAdded = new Update { UpdateId = long.Parse(result["update_id"].ToString()) };
 
-            updateToBeAdded.MessageData = new Message
-            {
-               ChatId = long.Parse(messageChat["id"].ToString()),
-               DateMessage = DateTimeParser(double.Parse(messageItens["date"].ToString())),
-               FirstName = messageFrom["first_name"].ToString(),
-               LastName = messageFrom["last_name"].ToString(),
-               MessageId = long.Parse(messageItens["message_id"].ToString()),
-               Text = messageItens["text"].ToString(),
-               UserId = long.Parse(messageFrom["id"].ToString()),
-               Username = messageFrom["username"].ToString()
-            };
+            updateToBeAdded.MessageData = new Message();
+            updateToBeAdded.MessageData.ChatId = long.Parse(messageChat["id"].ToString());
+            updateToBeAdded.MessageData.DateMessage = DateTimeParser(double.Parse(messageItens["date"].ToString()));
+            updateToBeAdded.MessageData.FirstName = messageFrom["first_name"].ToString();
+            updateToBeAdded.MessageData.LastName = messageFrom.ContainsKey("last_name") ? messageFrom["last_name"].ToString() : string.Empty;
+            updateToBeAdded.MessageData.MessageId = long.Parse(messageItens["message_id"].ToString());
+            updateToBeAdded.MessageData.Text = messageItens["text"].ToString();
+            updateToBeAdded.MessageData.UserId = long.Parse(messageFrom["id"].ToString());
+            updateToBeAdded.MessageData.Username = messageFrom.ContainsKey("username") ? messageFrom["username"].ToString() : string.Empty;
 
             telegramUpdate.Updates.Add(updateToBeAdded);
          }
