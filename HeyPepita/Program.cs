@@ -18,15 +18,15 @@ namespace HeyPepita
          int startingHour = DateTime.Now.Hour;
          int startingMinute = DateTime.Now.AddMinutes(1).Minute;
 
-         //MyScheduler.IntervalInMinutes(startingHour, startingMinute, 1, () =>
-         //{
+         MyScheduler.IntervalInMinutes(startingHour, startingMinute, 1, () =>
+         {
             ChargeController.UpdateTweets();
-         //});
+         });
 
-         //MyScheduler.IntervalInSeconds(startingHour, startingMinute, 10, () =>
-         //{
+         MyScheduler.IntervalInSeconds(startingHour, startingMinute, 10, () =>
+         {
             TelegramBotController.ProcessMessages();
-         //});
+         });
 
          Console.ReadLine();
 
@@ -45,20 +45,16 @@ namespace HeyPepita
          //Começa às 7h | Intervalo de 1 hora
          MyScheduler.IntervalInHours(7, 00, 1, () =>
          {
-            //Programar as coisa do telegram
+            TelegramBotController.ProcessMessages();
          });
 
 #endif
-
-
-         /* ********** TELEGRAM ********** */
-         //Fazer o envio da mensagem quando a solicitação chegar
-
 
          //TODO
          //1 - Melhorar tratamento de erros
          //2 - Projeto de testes
          //3 - Salvar logs (especialmente relacionado as buscas e ao tempo)
+         //4 - Adicionar design pattern de Chain of Responsibility
       }
    }
 }

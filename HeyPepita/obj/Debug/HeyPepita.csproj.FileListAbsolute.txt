@@ -1,9 +1,0 @@
-C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\obj\Debug\HeyPepita.csproj.CoreCompileInputs.cache
-C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\bin\Debug\HeyPepita.pdb
-C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\obj\Debug\HeyPepita.pdb
-C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\bin\Debug\HeyPepita.exe.config
-C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\bin\Debug\HeyPepita.exe
-C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\obj\Debug\HeyPepita.exe
-C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\obj\Debug\HeyPepita.Properties.Resources.resources
-C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\obj\Debug\HeyPepita.csproj.GenerateResource.cache
-C:\Users\olivia.mattiazzo\Downloads\Personal\HeyPepita\HeyPepita\obj\Debug\HeyPepita.csprojAssemblyReference.cache

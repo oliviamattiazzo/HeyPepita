@@ -106,6 +106,33 @@ namespace HeyPepita.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Oi! Meu nome é Olivia e eu criei esse bot porque gostaria de receber todo dia uma mensagem da @pepitaofc ao acordar! Meu Twitter e GitHub são @oliviamattiazzo, me segue lá! ✨.
+        /// </summary>
+        internal static string Resposta_MsgCreditos {
+            get {
+                return ResourceManager.GetString("Resposta_MsgCreditos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Olá! Não entendi o seu pedido. Os comandos que retornam mensagens são: &quot;Bom dia&quot;, &quot;Novidades&quot; e &quot;Créditos&quot;. Tente novamente! ✨.
+        /// </summary>
+        internal static string Resposta_MsgPadrao {
+            get {
+                return ResourceManager.GetString("Resposta_MsgPadrao", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seja bem viado ao Hey, Pepita bot! Os comandos que retornam mensagens são: &quot;Bom dia&quot;, &quot;Novidades&quot; e &quot;Créditos&quot;. Fique à vontade! ✨.
+        /// </summary>
+        internal static string Resposta_MsgWelcome {
+            get {
+                return ResourceManager.GetString("Resposta_MsgWelcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to desej, feira, segunda, terça, terca, quarta, quinta, sexta, sábado, sabado, domingo, família, familia, todos, bom dia, boa tarde, coisas boas, melhor, semana, nossas vidas, nossa vida.
         /// </summary>
         internal static string WORDS_GOOD_MORNING {

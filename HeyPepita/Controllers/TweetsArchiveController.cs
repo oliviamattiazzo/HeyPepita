@@ -69,6 +69,23 @@ namespace HeyPepita.Controllers
          }
       }
 
+      public static Tweet GetTweetNovidades()
+      {
+         XDocument xmlDoc = XDocument.Load(Properties.Resources.ADDRESS_TWEETS);
+         XElement latestTweet = xmlDoc.Element("Tweets").Element("LastTweet");
+         XElement userInfo = xmlDoc.Element("Tweets").Element("DadosPepita");
+
+         return new Tweet
+         {
+            CreatedAt = DateTime.Parse(latestTweet.Element("CreatedAt").Value),
+            FullText = latestTweet.Element("FullText").Value,
+            Id = latestTweet.Element("Id").Value,
+            NomeUsuario = userInfo.Element("NomeUsuario").Value,
+            TweetUrl = latestTweet.Element("TweetUrl").Value,
+            Username = userInfo.Element("Username").Value
+         };
+      }
+
       public static Tweet GetTweetBomDia()
       {
          XDocument xmlDoc = XDocument.Load(Properties.Resources.ADDRESS_TWEETS);

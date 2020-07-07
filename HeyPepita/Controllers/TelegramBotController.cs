@@ -32,15 +32,15 @@ namespace HeyPepita.Controllers
          messageSenderController.ReturnMessages(FilterNewMessages(latestUpdates.Updates));
       }
 
-      public static IEnumerable<Update> FilterNewMessages(List<Update> lstUpdates)
+      public static List<Update> FilterNewMessages(List<Update> lstUpdates)
       {
-         return lstUpdates.Where(p => p.UpdateId > GetLastUpdateId());
+         return lstUpdates.Where(p => p.MessageData.MessageId > GetLastMessageId()).ToList();
       }
 
-      private static long GetLastUpdateId()
+      public static long GetLastMessageId()
       {
          var xml = XDocument.Load(Properties.Resources.ADDRESS_UPDATECONTROLS);
-         return long.Parse(xml.Root.Element("LastUpdateId").Value);
+         return long.Parse(xml.Root.Element("LastMessageId").Value);
       }
 
       public static string GetBotToken()

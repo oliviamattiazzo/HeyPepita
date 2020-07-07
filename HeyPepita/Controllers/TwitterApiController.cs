@@ -94,7 +94,7 @@ namespace HeyPepita.Controllers
                FullText = item["full_text"],
                Id = item["id"].ToString(),
                NomeUsuario = userItens["name"],
-               TweetUrl = $"twitter.com/{userItens["screen_name"]}/status/{item["id"].ToString()}",
+               TweetUrl = "https://twitter.com/" + userItens["screen_name"] + "/status/" + item["id"].ToString(),
                Username = userItens["screen_name"]
             });
          }

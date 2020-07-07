@@ -2,5 +2,5 @@ HeyPepita/AuthorizationKeys.xml
 HeyPepita/Tweets.xml
 HeyPepita/UpdateControls.xml
 
-HeyPepita/bin
-HeyPepita/obj
+HeyPepita/bin/**
+HeyPepita/obj/**

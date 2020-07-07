@@ -7,32 +7,35 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using System.Xml.Linq;
 
 namespace HeyPepita.Controllers
 {
    public class TelegramMessagesSenderController
    {
-      public void ReturnMessages(IEnumerable<Update> newMessages)
+      public void ReturnMessages(List<Update> newMessages)
       {
          foreach (Update message in newMessages)
          {
             if (message.MessageData.Text.ToUpper().Contains("BOM DIA"))
                ReplyBomDiaMessage(message.MessageData.ChatId);
             else if (message.MessageData.Text.ToUpper().Contains("NOVIDADES"))
-               ReplyBomDiaMessage(message.MessageData.ChatId);
-            else if (message.MessageData.Text.ToUpper().Contains("CREDITOS"))
-               ReplyBomDiaMessage(message.MessageData.ChatId);
+               ReplyNovidadesMessage(message.MessageData.ChatId);
+            else if (message.MessageData.Text.ToUpper().Contains("CREDITOS") || message.MessageData.Text.ToUpper().Contains("CRÉDITOS"))
+               ReplyCreditosMessage(message.MessageData.ChatId);
+            else if (message.MessageData.Text.ToUpper().Contains("/START"))
+               ReplyWelcomeMessage(message.MessageData.ChatId);
             else
-               ReplyDefaultMessage();
+               ReplyDefaultMessage(message.MessageData.ChatId);
 
-            SaveIdLastMessageReplied();
+            SaveIdLastMessageReplied(message.MessageData.MessageId);
          }
       }
-
-      private void ReplyBomDiaMessage(long chatId)
+      
+      private void ReplyMessage(long chatId, string mensagem)
       {
-         string URL = "https://api.telegram.org/bot" + TelegramBotController.GetBotToken() + 
-                      "/sendMessage?chat_id=" + chatId + "&text=" + FormataResposta(TweetsArchiveController.GetTweetBomDia());
+         string URL = "https://api.telegram.org/bot" + TelegramBotController.GetBotToken() +
+                      "/sendMessage?chat_id=" + chatId + "&text=" + mensagem;
 
          var getUpdates = WebRequest.Create(URL) as HttpWebRequest;
          getUpdates.Method = "GET";
@@ -55,29 +58,50 @@ namespace HeyPepita.Controllers
          }
       }
 
-      private string FormataResposta(Tweet tweet)
+      private void ReplyBomDiaMessage(long chatId)
       {
-         return "";
+         ReplyMessage(chatId, FormataRespostaTweet(TweetsArchiveController.GetTweetBomDia()));
       }
 
-      private void ReplyNovidadesMessage()
+      private string FormataRespostaTweet(Tweet tweet)
       {
-         throw new NotImplementedException();
+         return tweet.NomeUsuario + " - @" + tweet.Username + "\n" +
+                tweet.TweetUrl;
       }
 
-      private void ReplyCreditosMessage()
+      private void ReplyNovidadesMessage(long chatId)
       {
-         throw new NotImplementedException();
+         ReplyMessage(chatId, FormataRespostaTweet(TweetsArchiveController.GetTweetNovidades()));
       }
 
-      private void ReplyDefaultMessage()
+      private void ReplyCreditosMessage(long chatId)
       {
-         throw new NotImplementedException();
+         ReplyMessage(chatId, Properties.Resources.Resposta_MsgCreditos);
       }
 
-      private void SaveIdLastMessageReplied()
+      private void ReplyDefaultMessage(long chatId)
       {
-         throw new NotImplementedException();
+         ReplyMessage(chatId, Properties.Resources.Resposta_MsgPadrao);
+      }
+
+      private void ReplyWelcomeMessage(long chatId)
+      {
+         ReplyMessage(chatId, Properties.Resources.Resposta_MsgWelcome);
+      }
+
+      private void SaveIdLastMessageReplied(long messageId)
+      {
+         XDocument xmlDoc = XDocument.Load(Properties.Resources.ADDRESS_UPDATECONTROLS);
+         long lastIdMessageSaved = TelegramBotController.GetLastMessageId();
+
+         if (messageId < lastIdMessageSaved)
+            throw new Exception("Error!");
+
+         xmlDoc.Root.Element("LastMessageId").Remove();
+
+         XElement root = xmlDoc.Element("Controls");
+         root.Add(new XElement("LastMessageId", messageId));
+         xmlDoc.Save(Properties.Resources.ADDRESS_UPDATECONTROLS);
       }
    }
 }

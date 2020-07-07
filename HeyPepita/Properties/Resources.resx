@@ -132,6 +132,15 @@
   <data name="IDENTIFIER_LAST_TWEET" xml:space="preserve">
     <value>LastTweet</value>
   </data>
+  <data name="Resposta_MsgCreditos" xml:space="preserve">
+    <value>Oi! Meu nome é Olivia e eu criei esse bot porque gostaria de receber todo dia uma mensagem da @pepitaofc ao acordar! Meu Twitter e GitHub são @oliviamattiazzo, me segue lá! ✨</value>
+  </data>
+  <data name="Resposta_MsgPadrao" xml:space="preserve">
+    <value>Olá! Não entendi o seu pedido. Os comandos que retornam mensagens são: "Bom dia", "Novidades" e "Créditos". Tente novamente! ✨</value>
+  </data>
+  <data name="Resposta_MsgWelcome" xml:space="preserve">
+    <value>Seja bem viado ao Hey, Pepita bot! Os comandos que retornam mensagens são: "Bom dia", "Novidades" e "Créditos". Fique à vontade! ✨</value>
+  </data>
   <data name="WORDS_GOOD_MORNING" xml:space="preserve">
     <value>desej, feira, segunda, terça, terca, quarta, quinta, sexta, sábado, sabado, domingo, família, familia, todos, bom dia, boa tarde, coisas boas, melhor, semana, nossas vidas, nossa vida</value>
   </data>
