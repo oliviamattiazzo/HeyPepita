@@ -70,6 +70,15 @@ namespace HeyPepita.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ..\..\Logs.txt.
+        /// </summary>
+        internal static string ADDRESS_LOGS {
+            get {
+                return ResourceManager.GetString("ADDRESS_LOGS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ..\..\Tweets.xml.
         /// </summary>
         internal static string ADDRESS_TWEETS {

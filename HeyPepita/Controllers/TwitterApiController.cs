@@ -42,7 +42,7 @@ namespace HeyPepita.Controllers
          }
          catch
          {
-            throw new Exception("Error!");
+            throw new Exception("Error getting tweets!");
          }
 
          return AdjustResponse(responseItems);
@@ -74,7 +74,7 @@ namespace HeyPepita.Controllers
          }
          catch
          {
-            throw new Exception("Error!");
+            throw new Exception("Error getting latest tweets! since_id: " + id);
          }
 
          return AdjustResponse(responseItems);

@@ -17,6 +17,9 @@ namespace HeyPepita.Controllers
       {
          foreach (Update message in newMessages)
          {
+            if (message.MessageData.ChatId == 0)
+               throw new Exception("Error! ChatId cannot be zero.");
+
             if (message.MessageData.Text.ToUpper().Contains("BOM DIA"))
                ReplyBomDiaMessage(message.MessageData.ChatId);
             else if (message.MessageData.Text.ToUpper().Contains("NOVIDADES"))
@@ -54,7 +57,7 @@ namespace HeyPepita.Controllers
          }
          catch
          {
-            throw new Exception("Error!");
+            throw new Exception("Error sending the message! chatId: " + chatId);
          }
       }
 
@@ -95,7 +98,7 @@ namespace HeyPepita.Controllers
          long lastIdMessageSaved = TelegramBotController.GetLastMessageId();
 
          if (messageId < lastIdMessageSaved)
-            throw new Exception("Error!");
+            throw new Exception("Error! The messageId cannot be less than the last message ID saved!");
 
          xmlDoc.Root.Element("LastMessageId").Remove();
 

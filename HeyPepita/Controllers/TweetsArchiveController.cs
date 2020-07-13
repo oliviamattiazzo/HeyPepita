@@ -117,7 +117,7 @@ namespace HeyPepita.Controllers
       public static void SaveLastGoodMorningTweet(Tweet lastGmTweet)
       {
          if (lastGmTweet == null)
-            throw new Exception("Error!");
+            throw new Exception("Error! There's no new Good Morning Tweet.");
 
          XDocument xmlDoc = XDocument.Load(Properties.Resources.ADDRESS_TWEETS);
          bool tweetIsNewer = true;

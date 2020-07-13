@@ -35,7 +35,7 @@ namespace HeyPepita.Controllers
          }
          catch
          {
-            throw new Exception("Error!");
+            throw new Exception("Error getting updates from Telegram!");
          }
 
          return AdjustResponse(responseItems);
@@ -57,21 +57,19 @@ namespace HeyPepita.Controllers
             Update updateToBeAdded = new Update { UpdateId = long.Parse(result["update_id"].ToString()) };
 
             updateToBeAdded.MessageData = new Message();
-            updateToBeAdded.MessageData.ChatId = long.Parse(messageChat["id"].ToString());
-            updateToBeAdded.MessageData.DateMessage = DateTimeParser(double.Parse(messageItens["date"].ToString()));
-            updateToBeAdded.MessageData.FirstName = messageFrom["first_name"].ToString();
+            updateToBeAdded.MessageData.ChatId = messageChat.ContainsKey("id") ? long.Parse(messageChat["id"].ToString()) : 0;
+            updateToBeAdded.MessageData.DateMessage = messageItens.ContainsKey("date") ? DateTimeParser(double.Parse(messageItens["date"].ToString())) : DateTime.MinValue;
+            updateToBeAdded.MessageData.FirstName = messageFrom.ContainsKey("first_name") ? messageFrom["first_name"].ToString() : string.Empty;
             updateToBeAdded.MessageData.LastName = messageFrom.ContainsKey("last_name") ? messageFrom["last_name"].ToString() : string.Empty;
-            updateToBeAdded.MessageData.MessageId = long.Parse(messageItens["message_id"].ToString());
-            updateToBeAdded.MessageData.Text = messageItens["text"].ToString();
-            updateToBeAdded.MessageData.UserId = long.Parse(messageFrom["id"].ToString());
+            updateToBeAdded.MessageData.MessageId = messageItens.ContainsKey("message_id") ? long.Parse(messageItens["message_id"].ToString()) : 0;
+            updateToBeAdded.MessageData.Text = messageItens.ContainsKey("text") ? messageItens["text"].ToString() : string.Empty;
+            updateToBeAdded.MessageData.UserId = messageFrom.ContainsKey("id") ? long.Parse(messageFrom["id"].ToString()) : 0;
             updateToBeAdded.MessageData.Username = messageFrom.ContainsKey("username") ? messageFrom["username"].ToString() : string.Empty;
 
             telegramUpdate.Updates.Add(updateToBeAdded);
          }
 
          return telegramUpdate;
-
-
       }
 
       private DateTime DateTimeParser(double unixTimeStamp)

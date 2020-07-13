@@ -58,7 +58,7 @@ namespace HeyPepita.Controllers
          }
          catch
          {
-            throw new Exception("Error!");
+            throw new Exception("Error getting Twitter Access Token!");
          }
 
          return accessToken;

@@ -49,13 +49,6 @@ namespace HeyPepita
          });
 
 #endif
-
-         //TODO
-         //1 - Melhorar tratamento de erros
-         //2 - Projeto de testes
-         //3 - Salvar logs (especialmente relacionado as buscas e ao tempo)
-         //4 - Adicionar design pattern de Chain of Responsibility
-         //5 - Comando Hey Pepita
       }
    }
 }

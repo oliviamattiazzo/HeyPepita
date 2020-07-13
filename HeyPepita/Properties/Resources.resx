@@ -120,6 +120,9 @@
   <data name="ADDRESS_KEYS" xml:space="preserve">
     <value>..\..\AuthorizationKeys.xml</value>
   </data>
+  <data name="ADDRESS_LOGS" xml:space="preserve">
+    <value>..\..\Logs.txt</value>
+  </data>
   <data name="ADDRESS_TWEETS" xml:space="preserve">
     <value>..\..\Tweets.xml</value>
   </data>

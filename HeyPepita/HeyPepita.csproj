@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\LogsController.cs" />
     <Compile Include="Controllers\TelegramBotController.cs" />
     <Compile Include="Controllers\TelegramMessagesSenderController.cs" />
     <Compile Include="Controllers\TelegramUpdatesController.cs" />

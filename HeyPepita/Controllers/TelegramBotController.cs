@@ -24,10 +24,10 @@ namespace HeyPepita.Controllers
          TelegramUpdate latestUpdates = updController.GetUpdates();
 
          if (!latestUpdates.Ok)
-            throw new Exception("Error!");
+            throw new Exception("Error getting latest updates from Telegram!");
 
          if (latestUpdates.Updates.Count() <= 0)
-            throw new Exception("Error!");
+            throw new Exception("Error! There is no updates.");
 
          messageSenderController.ReturnMessages(FilterNewMessages(latestUpdates.Updates));
       }
